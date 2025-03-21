@@ -1,44 +1,67 @@
-interface Shape {
-    void draw();
+interface Button {
+    void paint();
 }
 
-class Circle implements Shape {
-    public void draw() {
-        System.out.println("Circle is drawing");
+interface CheckBox {
+    void check();
+}
+
+class WindowButton implements Button{
+    public void paint() {
+        System.out.println("Windows Button");
     }
 }
 
-class Triangle implements Shape {
-    public void draw() {
-        System.out.println("Triangle is drawing");
+class MacButton implements Button{
+    public void paint() {
+        System.out.println("Mac Button");
     }
 }
 
-abstract class ShapeFactory {
-    abstract Shape createShape();
-}
-
-class CircleFactory extends ShapeFactory {
-    public Shape createShape() {
-        return new Circle();
+class WindowCheckBox implements CheckBox{
+    public void check() {
+        System.out.println("Windows CheckBox");
     }
 }
 
-class TriangleFactory extends ShapeFactory {
-    public Shape createShape() {
-        return new Triangle();
+class MacCheckBox implements CheckBox{
+    public void check() {
+        System.out.println("Mac CheckBox");
     }
 }
 
-public class FactoryDesignPattern {
+interface GUIFactory {
+    Button createButton();
+    CheckBox createCheckBox();
+}
+
+class MacFactory implements GUIFactory {
+    public Button createButton() {
+        return new MacButton();
+    }
+
+    public CheckBox createCheckBox() {
+        return new MacCheckBox();
+    }
+}
+
+class WindowsFactory implements GUIFactory {
+    public Button createButton() {
+        return new WindowButton();
+    }
+
+    public CheckBox createCheckBox() {
+        return new WindowCheckBox();
+    }
+}
+public class AbstractFactoryDesignPattern {
     public static void main(String[] args) {
-        ShapeFactory circleFactory = new CircleFactory();       
-        ShapeFactory triangleFactory = new TriangleFactory();
+        // now client only calls one factory
+        GUIFactory factory = new MacFactory();
+        Button button = factory.createButton();
+        CheckBox checkBox = factory.createCheckBox();
 
-        Shape circle = circleFactory.createShape();
-        Shape triangle = triangleFactory.createShape();
-
-        circle.draw();
-        triangle.draw();
+        button.paint();
+        checkBox.check();
     }
 }
