@@ -17,20 +17,20 @@ class BasicPizza implements Pizza {
 }
 
 abstract class PizzaDecorator implements Pizza {
-    protected Pizza pizza;
+    protected Pizza decoratedPizza;
 
     public PizzaDecorator(Pizza pizza) {
-        this.pizza = pizza;
+        this.decoratedPizza = pizza;
     }
 
     @Override
     public String getDescription() {
-        return pizza.getDescription();
+        return decoratedPizza.getDescription();
     }
 
     @Override
     public float getCost() {
-        return pizza.getCost();
+        return decoratedPizza.getCost();
     }
 }
 
@@ -41,12 +41,12 @@ class Cheese extends PizzaDecorator {
 
     @Override
     public String getDescription() {
-        return pizza.getDescription() + ", Cheese";
+        return decoratedPizza.getDescription() + ", Cheese";
     }
 
     @Override
     public float getCost() {
-        return pizza.getCost() + 55.5f;
+        return decoratedPizza.getCost() + 55.5f;
     }
 }
 
@@ -57,12 +57,12 @@ class Olives extends PizzaDecorator {
 
     @Override
     public String getDescription() {
-        return pizza.getDescription() + ", Olives";
+        return decoratedPizza.getDescription() + ", Olives";
     }
 
     @Override
     public float getCost() {
-        return pizza.getCost() + 75.5f;
+        return decoratedPizza.getCost() + 75.5f;
     }
 }
 
@@ -73,12 +73,12 @@ class Mushroom extends PizzaDecorator {
 
     @Override
     public String getDescription() {
-        return pizza.getDescription() + ", Mushroom";
+        return decoratedPizza.getDescription() + ", Mushroom";
     }
 
     @Override
     public float getCost() {
-        return pizza.getCost() + 95.5f;
+        return decoratedPizza.getCost() + 95.5f;
     }
 }
 
