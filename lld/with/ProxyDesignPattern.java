@@ -28,7 +28,7 @@ class MovieStreamingPlatformProxy implements MovieStreamingService {
         }
         System.out.println("Loading movie....");
 
-        if(realMovieStreamingPlatform == null) {        // lazy initialization
+        if(realMovieStreamingPlatform == null) {        // lazy initialization, null check to ensure object is only created when needed for the first time and reused for subsequent calls
             realMovieStreamingPlatform = new RealMovieStreamingPlatform();
         }
         realMovieStreamingPlatform.watchMovie(movie);
