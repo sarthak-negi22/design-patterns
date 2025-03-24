@@ -1,8 +1,7 @@
-// observer interface
-
 import java.util.ArrayList;
 import java.util.List;
 
+// observer interface
 interface Subscriber {
     void notify(String video);
 }
