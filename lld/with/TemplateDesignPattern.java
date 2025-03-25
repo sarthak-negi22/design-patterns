@@ -8,10 +8,10 @@ abstract class Beverage {
         System.out.println("Pouring into cup");
     }
 
-    protected abstract void brew(); 
+    protected abstract void brew();         // to be modified by subclasses
     protected abstract void addCondiments();
 
-    public void makeBeverage() {
+    public final void makeBeverage() {      // marked final so that subclasses arent able to modify the overall structure of making any beverage
         boilWater();
         brew();
         addCondiments();
@@ -52,6 +52,6 @@ public class TemplateDesignPattern {
         tea.makeBeverage();
 
         Coffee coffee = new Coffee();
-        coffee.makeBeverage();
+        coffee.makeBeverage();      // more readablle and maintainable with no violation of open-closed principle
     }
 }
