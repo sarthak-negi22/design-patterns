@@ -1,0 +1,1 @@
+failureCount >= FAILURE_THRESHOLD
